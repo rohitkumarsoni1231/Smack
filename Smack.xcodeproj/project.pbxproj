@@ -20,6 +20,7 @@
 		FA5683D9272FE258006BFA5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5683D7272FE258006BFA5C /* Main.storyboard */; };
 		FA5683DB272FE259006BFA5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5683DA272FE259006BFA5C /* Assets.xcassets */; };
 		FA5683DE272FE259006BFA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5683DC272FE259006BFA5C /* LaunchScreen.storyboard */; };
+		FAB93CCE273AAA5900D30C31 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB93CCD273AAA5900D30C31 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FA5683DA272FE259006BFA5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5683DD272FE259006BFA5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5683DF272FE259006BFA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB93CCD273AAA5900D30C31 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		FA5683C5272FE258006BFA5C = {
 			isa = PBXGroup;
 			children = (
+				FAB93CCC273AAA4000D30C31 /* Services */,
 				FA1DA30F27302EA500D95FDA /* Utilities */,
 				FA1DA30627300CE800D95FDA /* Controller */,
 				FA1DA30427300CCF00D95FDA /* View */,
@@ -151,6 +154,14 @@
 				FA5683DF272FE259006BFA5C /* Info.plist */,
 			);
 			path = Smack;
+			sourceTree = "<group>";
+		};
+		FAB93CCC273AAA4000D30C31 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FAB93CCD273AAA5900D30C31 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				FA5683D4272FE258006BFA5C /* SceneDelegate.swift in Sources */,
 				FA1DA31527312C1300D95FDA /* CreateAccountVC.swift in Sources */,
 				FA1DA31127302EC000D95FDA /* Constants.swift in Sources */,
+				FAB93CCE273AAA5900D30C31 /* AuthService.swift in Sources */,
 				FA1DA302272FFB0900D95FDA /* SWRevealViewController.m in Sources */,
 				FA1DA30A27300D3A00D95FDA /* ChannelVC.swift in Sources */,
 			);
