@@ -17,6 +17,7 @@ let LOCAL_BASR_URL = "http://localhost:3005/v1/"
 
 let URL_REGISTER = "\(LOCAL_BASR_URL)account/register"
 let URL_LOGIN = "\(LOCAL_BASR_URL)account/login"
+let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
 
 
 // Segues
