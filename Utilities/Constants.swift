@@ -24,6 +24,8 @@ let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
 let TO_LOGIN = "toLogin"
 let TO_CREATE_ACCOUNT = "toCreateAccount"
 let UNWIND = "unwindToChannel"
+
+let toAvatarPicker = "toAvatarPicker"
  
 
 // User Default
