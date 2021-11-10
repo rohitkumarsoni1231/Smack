@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 
 class AuthService {
@@ -24,7 +25,7 @@ class AuthService {
         }
     }
     
-    var authToke: String {
+    var authToken: String {
         get {
             return defaults.value(forKey: TOKEN_KEY) as! String
         }
@@ -46,10 +47,6 @@ class AuthService {
         
         let lowerCaseEmail = email.lowercased()
         
-        let header: HTTPHeaders = [
-            "Content-Type" : "application/json; charset=utf-8"
-        ]
-        
         let body:[String:Any] = [
             "email": lowerCaseEmail,
             "password": password
@@ -66,5 +63,45 @@ class AuthService {
         }
     
     }
+    
+    func loginUser(email: String, password: String, completion: @escaping CompletionHandler) {
+        let lowerCaseEmail = email.lowercased()
+        
+        let body:[String:Any] = [
+            "email": lowerCaseEmail,
+            "password": password
+        ]
+        
+        AF.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+            if response.error == nil {
+                
+//                if let json = response.value as? Dictionary<String, Any> {
+//                    if let email = json["user"] as? String {
+//                        self.userEmail = email
+//                    }
+//                    if let token = json["token"] as? String {
+//                        self.authToken = token
+//                    }
+//                }
+                
+            //Using SwiftyJSON
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data)
+                self.userEmail = json["user"].stringValue
+                self.authToken = json["token"].stringValue
+                self.isLoggedIn = true
+                } catch {
+                    print(error)
+                }
+                
+                completion(true)
+            } else {
+                completion(false)
+                debugPrint(response.error as Any)
+            }
+        }
+    }
+    
     
 }

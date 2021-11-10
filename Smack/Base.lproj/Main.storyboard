@@ -222,7 +222,7 @@
                                     <action selector="closePressed:" destination="sPg-Rb-HDy" eventType="touchUpInside" id="q6v-sd-Ire"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knX-PJ-sZU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knX-PJ-sZU" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="72" y="352" width="270" height="50"/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -235,6 +235,11 @@
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7uS-Ie-hp0">
                                 <rect key="frame" x="72" y="204" width="270" height="98"/>
@@ -424,6 +429,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createAccountBtnPressed:" destination="sPg-Rb-HDy" eventType="touchUpInside" id="odu-QY-dxn"/>
+                                    <action selector="pickAvatarPressed:" destination="Ve2-s9-kta" eventType="touchUpInside" id="yeZ-xA-rye"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgV-TT-cFx">
@@ -447,8 +453,11 @@
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                     <color key="baseForegroundColor" red="0.35686274509803922" green="0.52156862745098043" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="pickBGColorPressed:" destination="Ve2-s9-kta" eventType="touchUpInside" id="LEz-NP-KZd"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxA-bN-s7D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxA-bN-s7D" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="72" y="792" width="270" height="50"/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -461,6 +470,14 @@
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createAccntPressed:" destination="Ve2-s9-kta" eventType="touchUpInside" id="IK6-dY-NCV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o5I-Vc-2iD"/>
@@ -487,6 +504,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Ee-SU-mSM"/>
                     <connections>
+                        <outlet property="emailTxt" destination="EhN-Tv-aqR" id="oxz-fv-vi3"/>
+                        <outlet property="passTxt" destination="UOT-Ft-KgD" id="uvr-vY-oYf"/>
+                        <outlet property="userImg" destination="d3R-OK-H0P" id="kmV-Oe-nH3"/>
+                        <outlet property="usernameTxt" destination="KpR-jX-chz" id="xfG-sg-onD"/>
                         <segue destination="UzI-h3-S4V" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForunwindWithSegue:" id="shz-sj-nJY"/>
                     </connections>
                 </viewController>
