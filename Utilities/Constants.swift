@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 typealias CompletionHandler = (_ Success: Bool) -> ()
 
@@ -18,6 +19,12 @@ let LOCAL_BASR_URL = "http://localhost:3005/v1/"
 let URL_REGISTER = "\(LOCAL_BASR_URL)account/register"
 let URL_LOGIN = "\(LOCAL_BASR_URL)account/login"
 let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
+
+// Colors
+let smackPurplePlaceHolder = UIColor.systemPurple
+
+// Notifications Constants
+let NOTIf_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
 
 
 // Segues

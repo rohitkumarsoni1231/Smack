@@ -47,8 +47,20 @@ class AvatarPickerVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if segmentControl.selectedSegmentIndex == 0 {
             avatarType = .dark
+            segmentControl.selectedSegmentTintColor = UIColor.white
+            segmentControl.layer.borderWidth = 1
+            let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                segmentControl.setTitleTextAttributes(titleTextAttributes, for:.normal)
+            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+                segmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
         } else {
             avatarType = .light
+            segmentControl.selectedSegmentTintColor = UIColor.white
+            segmentControl.layer.borderWidth = 1
+            let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                segmentControl.setTitleTextAttributes(titleTextAttributes, for:.normal)
+            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+                segmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
         }
         collectionView.reloadData()
     }
