@@ -19,6 +19,7 @@ let LOCAL_BASR_URL = "http://localhost:3005/v1/"
 let URL_REGISTER = "\(LOCAL_BASR_URL)account/register"
 let URL_LOGIN = "\(LOCAL_BASR_URL)account/login"
 let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
+let URL_USER_BY_EMAIL = "\(LOCAL_BASR_URL)user/byEmail/"
 
 // Colors
 let smackPurplePlaceHolder = UIColor.systemPurple
@@ -44,4 +45,11 @@ let USER_EMAIL = "userEmail"
 let header: HTTPHeaders = [
     "Content-Type" : "application/json; charset=utf-8"
 ]
+
+let BEARER_HEADER: HTTPHeaders  = [
+
+    "Authorization":"Bearer \(AuthService.instance.authToken)",
+    "Content-Type": "application/json; charset=utf-8"
+]
+
 
