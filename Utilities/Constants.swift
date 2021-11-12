@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import UIKit
 
-typealias CompletionHandler = (_ Success: Bool) -> ()
+typealias CompletionHandler = (_ Success: Bool, _ errorMessage: String) -> ()
 
 // URL Constants
 
@@ -21,13 +21,15 @@ let URL_LOGIN = "\(LOCAL_BASR_URL)account/login"
 let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
 let URL_USER_BY_EMAIL = "\(LOCAL_BASR_URL)user/byEmail/"
 let URL_GET_CHANNELS = "\(LOCAL_BASR_URL)channel/"
+ 
 
 // Colors
 let smackPurplePlaceHolder = UIColor.systemPurple
 
 // Notifications Constants
 let NOTIf_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
-
+let NOTIf_CHANNELS_LOADED = Notification.Name("channelsLoaded")
+let NOTIf_CHANNEL_SELECTED = Notification.Name("channelSelected")
 
 // Segues
 let TO_LOGIN = "toLogin"

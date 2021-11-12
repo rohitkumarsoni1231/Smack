@@ -48,12 +48,12 @@ class CreateAccountVC: UIViewController {
         guard let pass = passTxt.text , passTxt.text != "" else { return }
         
         AuthService.instance.registerUser(email: email, password: pass)
-        { (success) in
+        { (success, errorMessage) in
             if success {
                 AuthService.instance.loginUser(email: email, password: pass, completion: {
-                    (success) in
+                    (success, errorMessage) in
                     if success {
-                        AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
+                        AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success, errorMessage) in
                             if success {
                                 
                                 self.spinner.isHidden = true

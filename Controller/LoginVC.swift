@@ -25,9 +25,9 @@ class LoginVC: UIViewController {
         
         guard let email = usernameTxt.text, usernameTxt.text != "" else { return }
         guard let pass = passwordTxt.text, passwordTxt.text != "" else { return }
-        AuthService.instance.loginUser(email: email, password:  pass) { (success) in
+        AuthService.instance.loginUser(email: email, password:  pass) { (success, errorMessage) in
             if success {
-                AuthService.instance.findUserByEmail(completion: { (success) in
+                AuthService.instance.findUserByEmail(completion: { (success, errorMessage) in
                     if success {
                         NotificationCenter.default.post(name: NOTIf_USER_DATA_DID_CHANGE, object: nil)
                         self.spinner.isHidden = true

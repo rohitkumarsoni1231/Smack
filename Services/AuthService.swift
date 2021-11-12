@@ -55,9 +55,9 @@ class AuthService {
         AF.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { response in
             
             if response.error == nil {
-                completion(true)
+                completion(true, "")
             } else {
-                completion(false)
+                completion(false, "")
                 debugPrint(response.error as Any)
             }
         }
@@ -95,9 +95,9 @@ class AuthService {
                     print(error)
                 }
                 
-                completion(true)
+                completion(true, "")
             } else {
-                completion(false)
+                completion(false, "")
                 debugPrint(response.error as Any)
             }
         }
@@ -121,9 +121,9 @@ class AuthService {
                 guard let data = response.data else { return }
             
                     self.setUserInfo(data: data)
-                    completion(true)
+                    completion(true, "")
             } else {
-                completion(false)
+                completion(false, "")
                 debugPrint(response.error as Any)
             }
         }
@@ -136,10 +136,10 @@ class AuthService {
             if response.error == nil {
                 guard let data = response.data else { return }
                 self.setUserInfo(data: data)
-                completion(true)
+                completion(true, "")
             
             } else {
-                completion(false)
+                completion(false, "")
                 debugPrint(response.error as Any)
             }
         }
