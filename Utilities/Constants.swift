@@ -20,6 +20,7 @@ let URL_REGISTER = "\(LOCAL_BASR_URL)account/register"
 let URL_LOGIN = "\(LOCAL_BASR_URL)account/login"
 let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
 let URL_USER_BY_EMAIL = "\(LOCAL_BASR_URL)user/byEmail/"
+let URL_GET_CHANNELS = "\(LOCAL_BASR_URL)channel/"
 
 // Colors
 let smackPurplePlaceHolder = UIColor.systemPurple

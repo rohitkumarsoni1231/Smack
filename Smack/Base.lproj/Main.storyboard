@@ -135,15 +135,15 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.49963061390000002" green="0.63823970060000002" blue="0.90866261719999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="47" id="6cb-8m-lJ5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCell" rowHeight="47" id="6cb-8m-lJ5" customClass="ChannelCell" customModule="Smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6cb-8m-lJ5" id="5PP-27-cJR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#General" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZI4-sR-ezk">
-                                                    <rect key="frame" x="30" y="16" width="81" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#general" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZI4-sR-ezk">
+                                                    <rect key="frame" x="30" y="11" width="78" height="25"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -152,10 +152,13 @@
                                             <constraints>
                                                 <constraint firstItem="ZI4-sR-ezk" firstAttribute="leading" secondItem="5PP-27-cJR" secondAttribute="leadingMargin" constant="10" id="0kb-f0-lBP"/>
                                                 <constraint firstItem="ZI4-sR-ezk" firstAttribute="centerY" secondItem="5PP-27-cJR" secondAttribute="centerY" id="3ny-DO-TPh"/>
-                                                <constraint firstItem="ZI4-sR-ezk" firstAttribute="top" secondItem="5PP-27-cJR" secondAttribute="topMargin" constant="5" id="Glg-tt-Jjp"/>
+                                                <constraint firstItem="ZI4-sR-ezk" firstAttribute="top" secondItem="5PP-27-cJR" secondAttribute="topMargin" id="Glg-tt-Jjp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="channelName" destination="ZI4-sR-ezk" id="7dn-Ud-A6g"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -200,6 +203,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="GBi-sk-yS5" id="Wa5-RO-MSv"/>
+                        <outlet property="tableView" destination="vti-pw-iJt" id="GN4-eR-Q34"/>
                         <outlet property="userImage" destination="CNh-h2-ELa" id="Jfw-hl-KjL"/>
                         <segue destination="sPg-Rb-HDy" kind="show" identifier="toLogin" id="dZL-HF-VFL"/>
                     </connections>
@@ -351,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbD-hA-4IJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1413.0434782608697" y="-494.19642857142856"/>
+            <point key="canvasLocation" x="1370" y="-496"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="ZH7-Go-EYT">
@@ -537,7 +541,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlo-wS-cLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="UzI-h3-S4V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2207.2463768115945" y="-492.1875"/>
+            <point key="canvasLocation" x="2164" y="-496"/>
         </scene>
         <!--Avatar PickerVC-->
         <scene sceneID="gZm-bU-vR8">
@@ -634,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuI-zF-XBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2905.7971014492755" y="-492.39130434782612"/>
+            <point key="canvasLocation" x="2938" y="-496"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.85490196078431369" green="1" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
