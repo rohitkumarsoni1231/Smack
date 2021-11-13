@@ -14,13 +14,14 @@ typealias CompletionHandler = (_ Success: Bool, _ errorMessage: String) -> ()
 // URL Constants
 
 let BASE_URL = "https://smacksmacky.herokuapp.com/v1/"
-let LOCAL_BASR_URL = "http://localhost:3005/v1/"
+let LOCAL_BASE_URL = "http://localhost:3005/v1/"
 
-let URL_REGISTER = "\(LOCAL_BASR_URL)account/register"
-let URL_LOGIN = "\(LOCAL_BASR_URL)account/login"
-let URL_USER_ADD = "\(LOCAL_BASR_URL)user/add"
-let URL_USER_BY_EMAIL = "\(LOCAL_BASR_URL)user/byEmail/"
-let URL_GET_CHANNELS = "\(LOCAL_BASR_URL)channel/"
+let URL_REGISTER = "\(LOCAL_BASE_URL)account/register"
+let URL_LOGIN = "\(LOCAL_BASE_URL)account/login"
+let URL_USER_ADD = "\(LOCAL_BASE_URL)user/add"
+let URL_USER_BY_EMAIL = "\(LOCAL_BASE_URL)user/byEmail/"
+let URL_GET_CHANNELS = "\(LOCAL_BASE_URL)channel/"
+let URL_GET_MESSAGES = "\(LOCAL_BASE_URL)message/byChannel/"
  
 
 // Colors

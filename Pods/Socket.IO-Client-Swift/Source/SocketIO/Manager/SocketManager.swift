@@ -45,7 +45,7 @@ import Foundation
 ///
 /// **NOTE**: The manager is not thread/queue safe, all interaction with the manager should be done on the `handleQueue`
 ///
-open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDataBufferable, ConfigSettable {
+open class SocketManager : NSObject, SocketManagerSpec, SocketParsable, SocketDataBufferable, ConfigSettable {
     private static let logType = "SocketManager"
 
     // MARK: Properties
@@ -118,8 +118,6 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
             }
         }
     }
-
-    public private(set) var version = SocketIOVersion.three
 
     /// A list of packets that are waiting for binary data.
     ///
@@ -204,8 +202,7 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
     /// Connects a socket through this manager's engine.
     ///
     /// - parameter socket: The socket who we should connect through this manager.
-    /// - parameter withPayload: Optional payload to send on connect
-    open func connectSocket(_ socket: SocketIOClient, withPayload payload: [String: Any]? = nil) {
+    open func connectSocket(_ socket: SocketIOClient) {
         guard status == .connected else {
             DefaultSocketLogger.Logger.log("Tried connecting socket when engine isn't open. Connecting",
                                            type: SocketManager.logType)
@@ -214,15 +211,7 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
             return
         }
 
-        var payloadStr = ""
-
-        if version.rawValue >= 3 && payload != nil,
-           let payloadData = try? JSONSerialization.data(withJSONObject: payload!, options: .fragmentsAllowed),
-           let jsonString = String(data: payloadData, encoding: .utf8) {
-            payloadStr = jsonString
-        }
-
-        engine?.send("0\(socket.nsp),\(payloadStr)", withData: [])
+        engine?.send("0\(socket.nsp),", withData: [])
     }
 
     /// Called when the manager has disconnected from socket.io.
@@ -293,8 +282,18 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
             return
         }
 
+        emitAll(event, withItems: emitData)
+    }
+
+    /// Sends an event to the server on all namespaces in this manager.
+    ///
+    /// Same as `emitAll(_:_:)`, but meant for Objective-C.
+    ///
+    /// - parameter event: The event to send.
+    /// - parameter items: The data to send with this event.
+    open func emitAll(_ event: String, withItems items: [Any]) {
         forAll {socket in
-            socket.emit([event] + emitData)
+            socket.emit(event, with: items, completion: nil)
         }
     }
 
@@ -350,40 +349,11 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
         DefaultSocketLogger.Logger.log("Engine opened \(reason)", type: SocketManager.logType)
 
         status = .connected
+        nsps["/"]?.didConnect(toNamespace: "/")
 
-        if version.rawValue < 3 {
-            nsps["/"]?.didConnect(toNamespace: "/", payload: nil)
+        for (nsp, socket) in nsps where nsp != "/" && socket.status == .connecting {
+            connectSocket(socket)
         }
-
-        for (nsp, socket) in nsps where socket.status == .connecting {
-            if version.rawValue < 3 && nsp == "/" {
-                continue
-            }
-
-            connectSocket(socket, withPayload: socket.connectPayload)
-        }
-    }
-
-    /// Called when the engine receives a ping message.
-    open func engineDidReceivePing() {
-        handleQueue.async {
-            self._engineDidReceivePing()
-        }
-    }
-
-    private func _engineDidReceivePing() {
-        emitAll(clientEvent: .ping, data: [])
-    }
-
-    /// Called when the sends a ping to the server.
-    open func engineDidSendPing() {
-        handleQueue.async {
-            self._engineDidSendPing()
-        }
-    }
-
-    private func _engineDidSendPing() {
-        emitAll(clientEvent: .ping, data: [])
     }
 
     /// Called when the engine receives a pong message.
@@ -397,15 +367,15 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
         emitAll(clientEvent: .pong, data: [])
     }
 
-    /// Called when the sends a pong to the server.
-    open func engineDidSendPong() {
+    /// Called when the sends a ping to the server.
+    open func engineDidSendPing() {
         handleQueue.async {
-            self._engineDidSendPong()
+            self._engineDidSendPing()
         }
     }
 
-    private func _engineDidSendPong() {
-        emitAll(clientEvent: .pong, data: [])
+    private func _engineDidSendPing() {
+        emitAll(clientEvent: .ping, data: [])
     }
 
     private func forAll(do: (SocketIOClient) throws -> ()) rethrows {
@@ -506,19 +476,14 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
         }
 
         DefaultSocketLogger.Logger.log("Trying to reconnect", type: SocketManager.logType)
-
-        forAll {socket in
-            guard socket.status == .connecting else { return }
-
-            socket.handleClientEvent(.reconnectAttempt, data: [(reconnectAttempts - currentReconnectAttempt)])
-        }
+        emitAll(clientEvent: .reconnectAttempt, data: [(reconnectAttempts - currentReconnectAttempt)])
 
         currentReconnectAttempt += 1
         connect()
 
         let interval = reconnectInterval(attempts: currentReconnectAttempt)
         DefaultSocketLogger.Logger.log("Scheduling reconnect in \(interval)s", type: SocketManager.logType)
-        handleQueue.asyncAfter(deadline: .now() + interval, execute: _tryReconnect)
+        handleQueue.asyncAfter(deadline: DispatchTime.now() + interval, execute: _tryReconnect)
     }
 
     func reconnectInterval(attempts: Int) -> Double {
@@ -540,13 +505,13 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
         for option in config {
             switch option {
             case let .forceNew(new):
-                forceNew = new
+                self.forceNew = new
             case let .handleQueue(queue):
-                handleQueue = queue
+                self.handleQueue = queue
             case let .reconnects(reconnects):
                 self.reconnects = reconnects
             case let .reconnectAttempts(attempts):
-                reconnectAttempts = attempts
+                self.reconnectAttempts = attempts
             case let .reconnectWait(wait):
                 reconnectWait = abs(wait)
             case let .reconnectWaitMax(wait):
@@ -557,8 +522,6 @@ open class SocketManager: NSObject, SocketManagerSpec, SocketParsable, SocketDat
                 DefaultSocketLogger.Logger.log = log
             case let .logger(logger):
                 DefaultSocketLogger.Logger = logger
-            case let .version(num):
-                version = num
             case _:
                 continue
             }

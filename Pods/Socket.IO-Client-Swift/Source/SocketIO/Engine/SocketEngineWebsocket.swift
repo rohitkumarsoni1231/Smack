@@ -27,12 +27,7 @@ import Foundation
 import Starscream
 
 /// Protocol that is used to implement socket.io WebSocket support
-public protocol SocketEngineWebsocket: SocketEngineSpec {
-    // MARK: Properties
-
-    /// Whether or not the ws is connected
-    var wsConnected: Bool { get }
-
+public protocol SocketEngineWebsocket : SocketEngineSpec {
     // MARK: Methods
 
     /// Sends an engine.io message through the WebSocket transport.
@@ -52,7 +47,7 @@ public protocol SocketEngineWebsocket: SocketEngineSpec {
 // WebSocket methods
 extension SocketEngineWebsocket {
     func probeWebSocket() {
-        if wsConnected  {
+        if ws?.isConnected ?? false {
             sendWebSocketMessage("probe", withType: .ping, withData: [], completion: nil)
         }
     }
@@ -74,14 +69,14 @@ extension SocketEngineWebsocket {
 
         ws?.write(string: "\(type.rawValue)\(str)")
 
+        if data.count == 0 {
+            completion?()
+        }
+
         for item in data {
             if case let .left(bin) = createBinaryDataForSend(using: item) {
                 ws?.write(data: bin, completion: completion)
             }
-        }
-
-        if data.count == 0 {
-            completion?()
         }
     }
 }

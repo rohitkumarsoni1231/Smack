@@ -44,17 +44,11 @@ import Foundation
     /// - parameter reason: The reason the engine opened.
     func engineDidOpen(reason: String)
 
-    /// Called when the engine receives a ping message. Only called in socket.io >3.
-    func engineDidReceivePing()
-
-    /// Called when the engine receives a pong message. Only called in socket.io 2.
+    /// Called when the engine receives a pong message.
     func engineDidReceivePong()
 
-    /// Called when the engine sends a ping to the server. Only called in socket.io 2.
+    /// Called when the engine sends a ping to the server.
     func engineDidSendPing()
-
-    /// Called when the engine sends a pong to the server. Only called in socket.io >3.
-    func engineDidSendPong()
 
     /// Called when the engine has a message that must be parsed.
     ///

@@ -77,7 +77,7 @@ extension Dictionary where Key == String, Value == Any {
             return .randomizationFactor(factor)
         case let ("secure", secure as Bool):
             return .secure(secure)
-        case let ("security", security as CertificatePinning):
+        case let ("security", security as SSLSecurity):
             return .security(security)
         case let ("selfSigned", selfSigned as Bool):
             return .selfSigned(selfSigned)
@@ -87,9 +87,7 @@ extension Dictionary where Key == String, Value == Any {
             return compress ? .compress : nil
         case let ("enableSOCKSProxy", enable as Bool):
             return .enableSOCKSProxy(enable)
-        case let ("version", version as Int):
-            return .version(SocketIOVersion(rawValue: version) ?? .three)
-        case _:
+        default:
             return nil
         }
     }

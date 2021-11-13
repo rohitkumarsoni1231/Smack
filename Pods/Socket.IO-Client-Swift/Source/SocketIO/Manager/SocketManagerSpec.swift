@@ -45,6 +45,7 @@ import Foundation
 /// To disconnect a socket and remove it from the manager, either call `SocketIOClient.disconnect()` on the socket,
 /// or call one of the `disconnectSocket` methods on this class.
 ///
+@objc
 public protocol SocketManagerSpec : AnyObject, SocketEngineClient {
     // MARK: Properties
 
@@ -70,7 +71,7 @@ public protocol SocketManagerSpec : AnyObject, SocketEngineClient {
 
     /// The minimum number of seconds to wait before attempting to reconnect.
     var reconnectWait: Int { get set }
-
+    
     /// The maximum number of seconds to wait before attempting to reconnect.
     var reconnectWaitMax: Int { get set }
 
@@ -83,9 +84,6 @@ public protocol SocketManagerSpec : AnyObject, SocketEngineClient {
     /// The status of this manager.
     var status: SocketIOStatus { get }
 
-    /// The version of socket.io in use.
-    var version: SocketIOVersion { get }
-
     // MARK: Methods
 
     /// Connects the underlying transport.
@@ -94,8 +92,7 @@ public protocol SocketManagerSpec : AnyObject, SocketEngineClient {
     /// Connects a socket through this manager's engine.
     ///
     /// - parameter socket: The socket who we should connect through this manager.
-    /// - parameter withPayload: Optional payload to send on connect
-    func connectSocket(_ socket: SocketIOClient, withPayload: [String: Any]?)
+    func connectSocket(_ socket: SocketIOClient)
 
     /// Called when the manager has disconnected from socket.io.
     ///
@@ -119,7 +116,7 @@ public protocol SocketManagerSpec : AnyObject, SocketEngineClient {
     ///
     /// - parameter event: The event to send.
     /// - parameter items: The data to send with this event.
-    func emitAll(_ event: String, _ items: SocketData...)
+    func emitAll(_ event: String, withItems items: [Any])
 
     /// Tries to reconnect to the server.
     ///

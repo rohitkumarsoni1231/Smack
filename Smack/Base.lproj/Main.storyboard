@@ -77,21 +77,108 @@
                                     <constraint firstAttribute="height" constant="48" id="Mmo-oI-7l1"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-2h-eEh">
+                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gqH-vZ-IXX"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78y-9b-TNB">
+                                <rect key="frame" x="350" y="820" width="54" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="send"/>
+                                <connections>
+                                    <action selector="sendMessagePressed:" destination="SaM-Zb-DZo" eventType="touchUpInside" id="bVj-cS-v5m"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="27o-do-GS1">
+                                <rect key="frame" x="0.0" y="114" width="414" height="678"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="86" id="zd6-qf-DYU" customClass="MessageCell" customModule="Smack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zd6-qf-DYU" id="5Im-XS-UVA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GAV-XV-SQN" customClass="CircleImage" customModule="Smack" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="0.0" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="LDh-FW-SGZ"/>
+                                                        <constraint firstAttribute="width" constant="60" id="jG4-NM-Scu"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="JonnyB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jos-Cb-D5I">
+                                                    <rect key="frame" x="77" y="0.0" width="58" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:33 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StS-g0-YNh">
+                                                    <rect key="frame" x="145" y="1.5" width="61" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQk-2b-lQi">
+                                                    <rect key="frame" x="77" y="30" width="305" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GAV-XV-SQN" firstAttribute="leading" secondItem="5Im-XS-UVA" secondAttribute="leading" constant="5" id="BHT-cE-Z5G"/>
+                                                <constraint firstItem="Jos-Cb-D5I" firstAttribute="top" secondItem="GAV-XV-SQN" secondAttribute="top" id="UCU-EE-EF9"/>
+                                                <constraint firstItem="StS-g0-YNh" firstAttribute="leading" secondItem="Jos-Cb-D5I" secondAttribute="trailing" constant="10" id="Xmx-R7-5z2"/>
+                                                <constraint firstItem="GAV-XV-SQN" firstAttribute="top" secondItem="5Im-XS-UVA" secondAttribute="top" id="Xp2-tH-drv"/>
+                                                <constraint firstItem="lQk-2b-lQi" firstAttribute="leading" secondItem="GAV-XV-SQN" secondAttribute="trailing" constant="12" id="bjv-3l-4ie"/>
+                                                <constraint firstItem="lQk-2b-lQi" firstAttribute="top" secondItem="Jos-Cb-D5I" secondAttribute="bottom" constant="10" id="dn1-Ub-h8L"/>
+                                                <constraint firstItem="Jos-Cb-D5I" firstAttribute="leading" secondItem="GAV-XV-SQN" secondAttribute="trailing" constant="12" id="dpe-o2-cFh"/>
+                                                <constraint firstItem="StS-g0-YNh" firstAttribute="centerY" secondItem="Jos-Cb-D5I" secondAttribute="centerY" id="p1g-Sb-5wF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lQk-2b-lQi" secondAttribute="bottom" constant="25" id="soq-D4-epe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lQk-2b-lQi" secondAttribute="trailing" constant="12" id="xcy-EO-R5H"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageBodyLabel" destination="lQk-2b-lQi" id="PV5-HJ-iJo"/>
+                                            <outlet property="timeStampLabel" destination="StS-g0-YNh" id="5WE-17-RHW"/>
+                                            <outlet property="userImg" destination="GAV-XV-SQN" id="lKY-gy-n6S"/>
+                                            <outlet property="userNameLabel" destination="Jos-Cb-D5I" id="Ssi-mr-EMn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x5z-NL-fFq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="x5z-NL-fFq" firstAttribute="trailing" secondItem="27o-do-GS1" secondAttribute="trailing" id="0vO-bI-TSf"/>
                             <constraint firstItem="jkN-Tz-gTb" firstAttribute="trailing" secondItem="x5z-NL-fFq" secondAttribute="trailing" id="3wv-si-5Mk"/>
+                            <constraint firstItem="78y-9b-TNB" firstAttribute="centerY" secondItem="INJ-2h-eEh" secondAttribute="centerY" id="4zZ-iI-mcM"/>
                             <constraint firstItem="amw-9D-85o" firstAttribute="leading" secondItem="x5z-NL-fFq" secondAttribute="leading" id="Cow-gX-AhH"/>
+                            <constraint firstItem="x5z-NL-fFq" firstAttribute="trailing" secondItem="78y-9b-TNB" secondAttribute="trailing" constant="10" id="Ftv-NV-eyU"/>
                             <constraint firstItem="jkN-Tz-gTb" firstAttribute="leading" secondItem="x5z-NL-fFq" secondAttribute="leading" id="PbF-Lq-m85"/>
                             <constraint firstItem="amw-9D-85o" firstAttribute="top" secondItem="T8m-v5-Ym7" secondAttribute="top" id="TMT-nH-jb2"/>
                             <constraint firstItem="jkN-Tz-gTb" firstAttribute="top" secondItem="x5z-NL-fFq" secondAttribute="top" id="aqh-w4-gzv"/>
+                            <constraint firstItem="INJ-2h-eEh" firstAttribute="top" secondItem="27o-do-GS1" secondAttribute="bottom" constant="30" id="hfY-zh-nN7"/>
+                            <constraint firstItem="27o-do-GS1" firstAttribute="top" secondItem="jkN-Tz-gTb" secondAttribute="bottom" id="iHD-Ml-YeX"/>
                             <constraint firstItem="amw-9D-85o" firstAttribute="trailing" secondItem="x5z-NL-fFq" secondAttribute="trailing" id="kLY-Hk-KaS"/>
+                            <constraint firstItem="INJ-2h-eEh" firstAttribute="leading" secondItem="x5z-NL-fFq" secondAttribute="leading" id="wLb-se-cbM"/>
+                            <constraint firstItem="INJ-2h-eEh" firstAttribute="trailing" secondItem="x5z-NL-fFq" secondAttribute="trailing" id="y6F-0p-s8v"/>
+                            <constraint firstItem="27o-do-GS1" firstAttribute="leading" secondItem="x5z-NL-fFq" secondAttribute="leading" id="yl0-9V-LbZ"/>
+                            <constraint firstItem="INJ-2h-eEh" firstAttribute="bottom" secondItem="x5z-NL-fFq" secondAttribute="bottom" id="zaA-qu-tD8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="channelNameLbl" destination="Eat-mJ-7XP" id="OkY-xB-u64"/>
                         <outlet property="menuBtn" destination="JT6-7d-Rxg" id="Cpw-sn-KNw"/>
+                        <outlet property="messageTxt" destination="INJ-2h-eEh" id="q5k-ac-ydx"/>
+                        <outlet property="tableView" destination="27o-do-GS1" id="qW7-TV-owj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDO-ER-mfs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -651,6 +738,7 @@
         <image name="closeButton" width="28" height="28"/>
         <image name="menuProfileIcon" width="99" height="99"/>
         <image name="profileDefault" width="192" height="192"/>
+        <image name="send" width="30" height="30"/>
         <image name="smackBack" width="28" height="28"/>
         <image name="smackBurger" width="40" height="40"/>
         <image name="smackLogo" width="48" height="40"/>
