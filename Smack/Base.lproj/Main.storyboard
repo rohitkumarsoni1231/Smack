@@ -95,7 +95,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="27o-do-GS1">
-                                <rect key="frame" x="0.0" y="114" width="414" height="678"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="683"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="86" id="zd6-qf-DYU" customClass="MessageCell" customModule="Smack" customModuleProvider="target">
@@ -165,7 +165,7 @@
                             <constraint firstItem="jkN-Tz-gTb" firstAttribute="leading" secondItem="x5z-NL-fFq" secondAttribute="leading" id="PbF-Lq-m85"/>
                             <constraint firstItem="amw-9D-85o" firstAttribute="top" secondItem="T8m-v5-Ym7" secondAttribute="top" id="TMT-nH-jb2"/>
                             <constraint firstItem="jkN-Tz-gTb" firstAttribute="top" secondItem="x5z-NL-fFq" secondAttribute="top" id="aqh-w4-gzv"/>
-                            <constraint firstItem="INJ-2h-eEh" firstAttribute="top" secondItem="27o-do-GS1" secondAttribute="bottom" constant="30" id="hfY-zh-nN7"/>
+                            <constraint firstItem="INJ-2h-eEh" firstAttribute="top" secondItem="27o-do-GS1" secondAttribute="bottom" constant="25" id="hfY-zh-nN7"/>
                             <constraint firstItem="27o-do-GS1" firstAttribute="top" secondItem="jkN-Tz-gTb" secondAttribute="bottom" id="iHD-Ml-YeX"/>
                             <constraint firstItem="amw-9D-85o" firstAttribute="trailing" secondItem="x5z-NL-fFq" secondAttribute="trailing" id="kLY-Hk-KaS"/>
                             <constraint firstItem="INJ-2h-eEh" firstAttribute="leading" secondItem="x5z-NL-fFq" secondAttribute="leading" id="wLb-se-cbM"/>
