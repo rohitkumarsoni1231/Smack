@@ -109,27 +109,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GAV-XV-SQN" customClass="CircleImage" customModule="Smack" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="10" width="60" height="60"/>
+                                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="LDh-FW-SGZ"/>
                                                         <constraint firstAttribute="width" constant="60" id="jG4-NM-Scu"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="262" verticalHuggingPriority="252" text="JonnyB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jos-Cb-D5I">
-                                                    <rect key="frame" x="77" y="10" width="57.5" height="18"/>
+                                                    <rect key="frame" x="82" y="10" width="57.5" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:33 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StS-g0-YNh">
-                                                    <rect key="frame" x="142.5" y="10" width="56" height="18"/>
+                                                    <rect key="frame" x="147.5" y="10" width="56" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQk-2b-lQi">
-                                                    <rect key="frame" x="77" y="38" width="305" height="23"/>
+                                                    <rect key="frame" x="82" y="38" width="300" height="23"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GAV-XV-SQN" firstAttribute="top" secondItem="Jos-Cb-D5I" secondAttribute="bottom" constant="-18" id="3Uh-vn-NGR"/>
-                                                <constraint firstItem="GAV-XV-SQN" firstAttribute="leading" secondItem="5Im-XS-UVA" secondAttribute="leading" constant="5" id="BHT-cE-Z5G"/>
+                                                <constraint firstItem="GAV-XV-SQN" firstAttribute="leading" secondItem="5Im-XS-UVA" secondAttribute="leading" constant="10" id="BHT-cE-Z5G"/>
                                                 <constraint firstItem="StS-g0-YNh" firstAttribute="leading" secondItem="Jos-Cb-D5I" secondAttribute="trailing" constant="8" id="Xmx-R7-5z2"/>
                                                 <constraint firstItem="GAV-XV-SQN" firstAttribute="top" secondItem="5Im-XS-UVA" secondAttribute="top" constant="10" id="Xp2-tH-drv"/>
                                                 <constraint firstItem="lQk-2b-lQi" firstAttribute="leading" secondItem="GAV-XV-SQN" secondAttribute="trailing" constant="12" id="bjv-3l-4ie"/>
